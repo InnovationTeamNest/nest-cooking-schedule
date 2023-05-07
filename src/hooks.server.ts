@@ -1,6 +1,7 @@
 import type { Handle } from '@sveltejs/kit';
 import Student from '$lib/server/models/Student';
 import '$lib/server/database';
+import config from './routes/api/config';
 
 export const handle = (async ({ event, resolve }) => {
 	let request = event.request;
@@ -12,7 +13,9 @@ export const handle = (async ({ event, resolve }) => {
 			event.locals.user = session;
 			console.log(`User authenticated.`, session);
 		} else {
-			event.cookies.delete('sessionid');
+			event.cookies.delete('sessionid', {
+				...config.cookies
+			});
 			console.warn(
 				"An invalid authentication attempt was detected. The user's session has been deleted."
 			);
