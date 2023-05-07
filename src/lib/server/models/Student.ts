@@ -8,7 +8,7 @@ export interface IStudent {
 	fullName: string;
 	telegram: {
 		handle: string;
-		id: number;
+		tgId: number;
 	};
 	photoUrl: string;
 	groupNumber: number;
@@ -34,7 +34,7 @@ const StudentSchema = new Schema(
 					type: String,
 					required: true
 				},
-				id: {
+				tgId: {
 					type: Number,
 					required: true
 				}
@@ -84,7 +84,7 @@ const StudentSchema = new Schema(
 				let valid = TelegramUtils.checkTelegramAuth(userInfo);
 				if (!valid) return;
 
-				let targetUser = await this.findOne({ telegram: { id: userInfo.id } }).exec();
+				let targetUser = await this.findOne({ 'telegram.tgId': userInfo.id }).exec();
 
 				let { hash, ...data } = userInfo;
 				if (!targetUser) {
@@ -93,7 +93,7 @@ const StudentSchema = new Schema(
 						fullName: userInfo.first_name + ' ' + userInfo.last_name,
 						telegram: {
 							handle: userInfo.username,
-							id: userInfo.id
+							tgId: userInfo.id
 						},
 						photoUrl: userInfo.photo_url,
 						groupNumber: 0,
@@ -146,7 +146,7 @@ const StudentSchema = new Schema(
 					fullName: targetUser.fullName,
 					telegram: {
 						handle: targetUser.telegram.handle,
-						id: targetUser.telegram.id
+						tgId: targetUser.telegram.tgId
 					},
 					photoUrl: targetUser.photoUrl,
 					groupNumber: targetUser.groupNumber,
@@ -157,6 +157,16 @@ const StudentSchema = new Schema(
 						notes: strike.notes
 					}))
 				};
+			}
+		},
+		methods: {
+			logout: async function (sessionId: string) {
+				let delQuery = await Session.deleteOne({ _id: sessionId, userId: this.id }).exec();
+				return delQuery.deletedCount === 1;
+			},
+			terminateAllSessions: async function () {
+				let delQuery = await Session.deleteMany({ userId: this.id }).exec();
+				return delQuery.deletedCount > 0;
 			}
 		}
 	}
