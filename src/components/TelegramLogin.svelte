@@ -122,21 +122,4 @@ onMount(() => {
   width: 100%;
   height: 100%;
 }
-
-.user-data .logout {
-  font-size: 16px;
-}
-
-.user-data .logout button {
-  background: none;
-  border: none;
-  color: var(--color-cooking-club-fg);
-  cursor: pointer;
-  font-size: 16px;
-  padding: 0;
-}
-
-.user-data .logout button:hover {
-  text-decoration: underline;
-}
 </style>

@@ -2,6 +2,7 @@ import mongoose, { Schema, Query } from 'mongoose';
 import Session from './Session';
 import type { UserInfo } from '../../../stores/app';
 import TelegramUtils from '../../../stores/telegram.server';
+import AuthLogger from '../loggers/logger.auth';
 
 export interface IStudent {
 	id: string;
@@ -88,7 +89,7 @@ const StudentSchema = new Schema(
 
 				let { hash, ...data } = userInfo;
 				if (!targetUser) {
-					console.warn('An unknown user signed in for the first time:', data);
+					AuthLogger.warn('An unknown user signed in for the first time:', { data });
 					targetUser = await this.create({
 						fullName: userInfo.first_name + ' ' + userInfo.last_name,
 						telegram: {
