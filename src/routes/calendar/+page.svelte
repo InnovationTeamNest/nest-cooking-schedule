@@ -1,3 +1,1 @@
-<main>
-  <h1>Calendar</h1>
-</main>
+<h1>Calendar</h1>

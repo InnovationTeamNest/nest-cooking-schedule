@@ -1,3 +1,1 @@
-<main>
-  <h1>Settings</h1>
-</main>
+<h1>Settings</h1>

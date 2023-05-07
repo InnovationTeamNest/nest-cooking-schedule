@@ -26,7 +26,7 @@
 </script>
 
 <style>
-  main {
+  :global(main) {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -36,35 +36,33 @@
   }
 </style>
     
-<main>
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-</main>
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />

@@ -2,8 +2,9 @@
 	import TelegramLogin from './TelegramLogin.svelte';
 	import CookingLogo from '../assets/logo-cooking.png';
 	import CookingLogoDark from '../assets/logo-cooking-dark.png';
-	import { IconCalendar, IconLogout, IconSettings, IconTools } from '@tabler/icons-svelte';
+	import { IconCalendar, IconGridDots, IconHome, IconLayoutDashboard, IconLogout, IconSettings, IconTools } from '@tabler/icons-svelte';
 	import { loggedUser, logout } from '../stores/app';
+	import NavLink from './NavLink.svelte';
 	$: loggedIn = !!$loggedUser;
 </script>
 
@@ -22,18 +23,21 @@
 		<h2>Turni di pulizia</h2>
 	</div>
 	<div class="right">
+		<NavLink class="admin" hidden={!loggedIn} href="/admin">
+			<IconTools size={24} />
+		</NavLink>
+		<NavLink class="home" hidden={false} href="/">
+			<IconHome size={24} />
+		</NavLink>
+		<NavLink class="calendar" hidden={!loggedIn} href="/calendar">
+			<IconCalendar size={24} />
+		</NavLink>
+		<NavLink class="settings" hidden={!loggedIn} href="/settings">
+			<IconSettings size={24} />
+		</NavLink>
 		<button class="logout" hidden={!loggedIn} on:click={logout}>
 			<IconLogout size={24} />
 		</button>
-		<a class="settings" hidden={!loggedIn} href="/settings">
-			<IconSettings size={24} />
-		</a>
-		<a class="calendar" hidden={!loggedIn} href="/calendar">
-			<IconCalendar size={24} />
-		</a>
-		<a class="admin" hidden={!loggedIn} href="/admin">
-			<IconTools size={24} />
-		</a>
 		<div class="user">
 			<TelegramLogin mode="callback" requestAccess="write" telegramLogin="NESTCookingBot" />
 		</div>
@@ -98,11 +102,11 @@ header {
 	margin-left: 8px;
 }
 
-.right .admin {
+.right :global(.admin) {
 	color: goldenrod;
 }
 
-.right > :is(button, a) {
+.right > :global(:is(button, a)) {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -117,13 +121,13 @@ header {
 	color: rgb(199, 35, 35);
 }
 
-.right > :is(button, a):hover {
+.right > :global(:is(button, a):is(:hover, .active)) {
 	background: var(--color-button-hover);
 	cursor: pointer;
 }
 
 @media (prefers-color-scheme: dark) {
-	.right > :is(button, a):hover {
+	.right > :global(:is(button, a):is(:hover, .active)) {
 		background: var(--color-button-hover);
 	}
 }
