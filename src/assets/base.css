@@ -22,17 +22,28 @@
 
 :root {
   --color-page-bg: #FFFFFF;
+  --color-page-bg-mid-contrast: #fbfbfb;
+  --color-page-bg-contrast: #f2f2f2;
   --color-card-bg: #FFFFFF;
   --color-daylight-bg: #e5de44;
   --color-nighttime-bg: #053752;
   --color-cooking-club-fg: #85190F;
   --color-soft-fg: #777;
   --color-button-hover: rgba(0, 0, 0, 0.05);
+
+  --date-picker-foreground: var(--color-page-fg);
+  --date-picker-background: var(--color-page-bg-contrast);
+  --date-picker-highlight-border: var(--color-cooking-club-fg);
+  --date-picker-highlight-shadow: #85190F99;
+  --date-picker-selected-color: var(--color-page-fg);
+  --date-picker-selected-background: var(--color-cooking-club-fg);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --color-page-bg: #212121;
+    --color-page-bg-mid-contrast: #252525;
+    --color-page-bg-contrast: #151515;
     /* --color-page-fg: #959559; */
     --color-page-fg: #cccccc;
     --color-card-bg: #252525;
@@ -64,4 +75,72 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+input {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.2rem;
+  padding: 12px 16px !important;
+  border: 0;
+  border-radius: 8px !important;
+  background: var(--color-page-bg-contrast);
+  color: var(--color-page-fg);
+  display: block;
+  margin: 4px 0;
+  width: 200px !important;
+  box-sizing: border-box;
+  transition: box-shadow 0.2s ease-in-out, border 0.2s ease-in-out;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--color-cooking-club-fg);
+}
+
+input.inline {
+  display: inline-block;
+  margin: 0 1ch;
+}
+
+input[type=submit] {
+  background: var(--color-cooking-club-fg);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  filter: brightness(0.9);
+}
+
+label[for] {
+  display: block;
+  font-weight: bold;
+  margin: 4px 2px;
+}
+
+.date-time-field {
+  position: relative;
+}
+
+.date-time-field::after {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-color: var(--date-picker-foreground);
+  mask-image: url('./calendar.svg');
+  mask-size: 24px;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-image: url('./calendar.svg');
+  -webkit-mask-size: 24px;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  line-height: 1;
+  font-size: 14px;
+  position: absolute;
+  right: 12px;
+  top: calc(50% - 12px);
+  bottom: 0;
 }

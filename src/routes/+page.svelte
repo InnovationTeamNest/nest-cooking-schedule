@@ -26,43 +26,44 @@
 </script>
 
 <style>
-  :global(main) {
+  #all-shifts {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 48px 64px;
     box-sizing: border-box;
     gap: 32px;
   }
 </style>
-    
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
-<CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+
+<div id="all-shifts">
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+  <CleaningAggregate shifts={[decoyShift, decoyShiftDinner]} />
+</div>
