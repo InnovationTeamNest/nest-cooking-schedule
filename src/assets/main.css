@@ -31,6 +31,7 @@ main {
 
 #app > main {
   grid-area: Main;
+  padding: 48px 64px;
 }
 
 #app > footer {

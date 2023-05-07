@@ -1,14 +1,21 @@
 <script lang="ts">
 	import TelegramLogin from './TelegramLogin.svelte';
 	import CookingLogo from '../assets/logo-cooking.png';
-	import { IconCalendar, IconDoor, IconDoorExit, IconLogout, IconSettings } from '@tabler/icons-svelte';
+	import CookingLogoDark from '../assets/logo-cooking-dark.png';
+	import { IconCalendar, IconLogout, IconSettings, IconTools } from '@tabler/icons-svelte';
 	import { loggedUser, logout } from '../stores/app';
 	$: loggedIn = !!$loggedUser;
 </script>
 
 <header>
 	<div class="logo">
-		<img src={CookingLogo} alt="logo" />
+		<a href="/">
+			<picture>
+				<source srcset={CookingLogo} media="(prefers-color-scheme: light)" />
+				<source srcset={CookingLogoDark} media="(prefers-color-scheme: dark)" />
+				<img src={CookingLogo} alt="logo" />
+			</picture>
+		</a>
 	</div>
 	<div class="title">
 		<h1>COOKING CLUB</h1>
@@ -18,12 +25,15 @@
 		<button class="logout" hidden={!loggedIn} on:click={logout}>
 			<IconLogout size={24} />
 		</button>
-		<button class="settings" hidden={!loggedIn}>
+		<a class="settings" hidden={!loggedIn} href="/settings">
 			<IconSettings size={24} />
-		</button>
-		<button class="calendar" hidden={!loggedIn}>
+		</a>
+		<a class="calendar" hidden={!loggedIn} href="/calendar">
 			<IconCalendar size={24} />
-		</button>
+		</a>
+		<a class="admin" hidden={!loggedIn} href="/admin">
+			<IconTools size={24} />
+		</a>
 		<div class="user">
 			<TelegramLogin mode="callback" requestAccess="write" telegramLogin="NESTCookingBot" />
 		</div>
@@ -44,9 +54,14 @@ header {
 	height: 100px;
 }
 
-.logo img {
+.logo img, .logo a {
+	display: block;
 	width: 100%;
 	height: 100%;
+}
+
+.logo, .logo * {
+	cursor: pointer !important;
 }
 
 .title {
@@ -83,7 +98,11 @@ header {
 	margin-left: 8px;
 }
 
-.right > button {
+.right .admin {
+	color: goldenrod;
+}
+
+.right > :is(button, a) {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -98,13 +117,13 @@ header {
 	color: rgb(199, 35, 35);
 }
 
-.right > button:hover {
+.right > :is(button, a):hover {
 	background: var(--color-button-hover);
 	cursor: pointer;
 }
 
 @media (prefers-color-scheme: dark) {
-	.right > button:hover {
+	.right > :is(button, a):hover {
 		background: var(--color-button-hover);
 	}
 }

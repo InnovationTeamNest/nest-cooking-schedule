@@ -2,7 +2,6 @@ import type { PageServerLoad } from './$types';
 
 export const load = (async ({ params, cookies, locals }) => {
 	return {
-		user: locals.user,
 		shifts: [
 			{
 				group: {

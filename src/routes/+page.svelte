@@ -1,16 +1,6 @@
 <script lang="ts">
   import CleaningAggregate from '../components/CleaningAggregate.svelte';
   import type Shift from '../models/Shift';
-  import type { PageData } from './$types';
-  import { loggedUser } from '../stores/app';
-	import { onMount } from 'svelte';
-
-  export let data: PageData;
-
-  onMount(() => {
-    console.log("Setting loggedUser (client): ", data.user);
-    loggedUser.set(data.user);
-  });
 
   let decoyShift: Shift = {
     group: {
