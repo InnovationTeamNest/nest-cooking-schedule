@@ -1,0 +1,65 @@
+@font-face {
+  font-family: "Arvo";
+  src: url("./fonts/Arvo-Bold.eot?#iefix") format("embedded-opentype"),
+    url("./fonts/Arvo-Bold.woff2") format("woff2"),
+    url("./fonts/Arvo-Bold.woff") format("woff"),
+    url("./fonts/Arvo-Bold.ttf") format("truetype"),
+    url("./fonts/Arvo-Bold.svg#Arvo-Bold") format("svg");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Arvo";
+  src: url("./fonts/Arvo-Regular.eot?#iefix") format("embedded-opentype"),
+    url("./fonts/Arvo-Regular.woff2") format("woff2"),
+    url("./fonts/Arvo.woff") format("woff"),
+    url("./fonts/Arvo.ttf") format("truetype"),
+    url("./fonts/Arvo.svg#Arvo") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --color-page-bg: #FFFFFF;
+  --color-card-bg: #FFFFFF;
+  --color-daylight-bg: #e5de44;
+  --color-nighttime-bg: #053752;
+  --color-cooking-club-fg: #85190F;
+  --color-soft-fg: #777;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-page-bg: #212121;
+    /* --color-page-fg: #959559; */
+    --color-page-fg: #cccccc;
+    --color-card-bg: #252525;
+    --color-daylight-bg: #e5de44;
+    --color-nighttime-bg: #053752;
+    --color-cooking-club-fg: #85190F;
+    --color-soft-fg: #777777;
+  }
+
+  .logo:not(footer .logo), .title h1, a, button.link-like {
+    filter: saturate(1.5);
+  }
+
+  .shifts > .shift {
+    filter: brightness(0.8) saturate(0.8);
+  }
+}
+
+::selection {
+  background: var(--color-cooking-club-fg);
+  color: white;
+}
+
+a {
+  color: var(--color-cooking-club-fg);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

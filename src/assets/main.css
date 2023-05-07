@@ -1,0 +1,38 @@
+@import './base.css';
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--color-page-bg);
+  color: var(--color-page-fg);
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-areas: "Header"
+                        "Main"
+                        "Footer";
+
+  grid-template-rows: fit-content(100%) 1fr fit-content(100%);
+}
+
+main {
+  height: 100%;
+}
+
+#app > header {
+  grid-area: Header;
+}
+
+#app > main {
+  grid-area: Main;
+}
+
+#app > footer {
+  grid-area: Footer;
+}
