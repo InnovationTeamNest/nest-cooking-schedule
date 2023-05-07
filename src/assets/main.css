@@ -36,3 +36,7 @@ main {
 #app > footer {
   grid-area: Footer;
 }
+
+[hidden] {
+  display: none !important;
+}

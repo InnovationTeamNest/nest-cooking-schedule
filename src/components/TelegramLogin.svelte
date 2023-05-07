@@ -5,9 +5,6 @@
     <div class="username">
       { $loggedUser?.telegram.handle }
     </div>
-    <div class="logout">
-      <button class="link-like" on:click={logout}>Esci</button>
-    </div>
   </div>
   <div class="picture">
     <img alt="User" src={$loggedUser?.photoUrl} />
@@ -86,10 +83,6 @@ onMount(() => {
 </script>
 
 <style>
-[hidden] {
-  display: none !important;
-}
-
 .user-data {
   display: flex;
   align-items: center;

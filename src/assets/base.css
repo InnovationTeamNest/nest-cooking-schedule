@@ -27,6 +27,7 @@
   --color-nighttime-bg: #053752;
   --color-cooking-club-fg: #85190F;
   --color-soft-fg: #777;
+  --color-button-hover: rgba(0, 0, 0, 0.05);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -37,13 +38,14 @@
     --color-card-bg: #252525;
     --color-daylight-bg: #e5de44;
     --color-nighttime-bg: #053752;
-    --color-cooking-club-fg: #85190F;
+    --color-cooking-club-fg: rgb(199, 35, 35);
     --color-soft-fg: #777777;
+    --color-button-hover: rgba(255, 255, 255, 0.05);
   }
 
-  .logo:not(footer .logo), .title h1, a, button.link-like {
+  /* .logo:not(footer .logo), .title h1, a, button.link-like {
     filter: saturate(1.5);
-  }
+  }*/
 
   .shifts > .shift {
     filter: brightness(0.8) saturate(0.8);

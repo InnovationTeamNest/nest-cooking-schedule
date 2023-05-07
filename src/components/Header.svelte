@@ -1,8 +1,10 @@
 <script lang="ts">
 	import TelegramLogin from './TelegramLogin.svelte';
 	import CookingLogo from '../assets/logo-cooking.png';
+	import { IconCalendar, IconDoor, IconDoorExit, IconLogout, IconSettings } from '@tabler/icons-svelte';
+	import { loggedUser, logout } from '../stores/app';
+	$: loggedIn = !!$loggedUser;
 </script>
-
 
 <header>
 	<div class="logo">
@@ -12,8 +14,19 @@
 		<h1>COOKING CLUB</h1>
 		<h2>Turni di pulizia</h2>
 	</div>
-	<div class="login">
-		<TelegramLogin mode="callback" requestAccess="write" telegramLogin="NESTCookingBot" />
+	<div class="right">
+		<button class="logout" hidden={!loggedIn} on:click={logout}>
+			<IconLogout size={24} />
+		</button>
+		<button class="settings" hidden={!loggedIn}>
+			<IconSettings size={24} />
+		</button>
+		<button class="calendar" hidden={!loggedIn}>
+			<IconCalendar size={24} />
+		</button>
+		<div class="user">
+			<TelegramLogin mode="callback" requestAccess="write" telegramLogin="NESTCookingBot" />
+		</div>
 	</div>
 </header>
 
@@ -59,7 +72,40 @@ header {
 	font-size: 24px;
 }
 
-.login {
+.right {
+	display: flex;
+	align-items: center;
 	margin-left: auto;
+	gap: 8px;
+}
+
+.right .user {
+	margin-left: 8px;
+}
+
+.right > button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 16px;
+	border-radius: 8px;
+	background: none;
+	border: 0;
+	color: inherit;
+}
+
+.right > button.logout {
+	color: rgb(199, 35, 35);
+}
+
+.right > button:hover {
+	background: var(--color-button-hover);
+	cursor: pointer;
+}
+
+@media (prefers-color-scheme: dark) {
+	.right > button:hover {
+		background: var(--color-button-hover);
+	}
 }
 </style>
