@@ -13,6 +13,12 @@ npm run dev
 npm run dev -- --open
 ```
 
+For Telegram Widget to properly work:
+
+```
+npm run dev -- --host --port 80
+```
+
 ## Building
 
 To create a production version of your app:
