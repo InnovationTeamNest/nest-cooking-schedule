@@ -24,9 +24,9 @@
 import { DateTime } from 'luxon';
 import CleaningShift from './CleaningShift.svelte';
 import { IconSpray } from '@tabler/icons-svelte';
-import type Shift from '../models/Shift';
+import type IShift from '../models/Shift';
 
-export let shifts: Shift[];
+export let shifts: IShift[];
 
 $: date = shifts.map((x) => x.date).sort()[0];
 </script>

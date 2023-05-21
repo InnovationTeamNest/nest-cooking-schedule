@@ -28,5 +28,5 @@ const ShiftSchema = new Schema({
 	}
 });
 
-const Shift = mongoose.model('Shifts', ShiftSchema);
+const Shift = mongoose.model('Shifts', ShiftSchema, 'Shifts', { overwriteModels: true });
 export default Shift;

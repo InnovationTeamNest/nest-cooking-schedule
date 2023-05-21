@@ -6,7 +6,12 @@ const GroupSchema = new Schema({
 		required: true
 	},
 	members: {
-		type: [String],
+		type: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'Students'
+			}
+		],
 		required: true,
 		default: []
 	},
@@ -18,5 +23,5 @@ const GroupSchema = new Schema({
 	}
 });
 
-const Group = mongoose.model('Group', GroupSchema);
+const Group = mongoose.model('Group', GroupSchema, 'Groups', { overwriteModels: true });
 export default Group;

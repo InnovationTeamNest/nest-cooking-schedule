@@ -1,8 +1,8 @@
 <script lang="ts">
   import CleaningAggregate from '../components/CleaningAggregate.svelte';
-  import type Shift from '../models/Shift';
+  import type IShift from '../models/Shift';
 
-  let decoyShift: Shift = {
+  let decoyShift: IShift = {
     group: {
       number: 1,
       members: ['Demetrio Battaglia', 'Riccardo Lussana', 'Benedetta Freddi', 'Antonio Simon'],
@@ -13,7 +13,7 @@
     when: 'lunch',
   };
   
-  let decoyShiftDinner: Shift = {
+  let decoyShiftDinner: IShift = {
     group: {
       number: 2,
       members: ['Demetrio Battaglia', 'Riccardo Lussana', 'Benedetta Freddi', 'Antonio Simon'],

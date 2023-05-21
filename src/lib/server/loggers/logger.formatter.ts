@@ -11,12 +11,16 @@ const LogFormatter = winston.format.combine(
 	winston.format.timestamp(),
 	winston.format.printf(({ level, service, message, label, timestamp, ...other }) => {
 		let cols = (process?.stdout?.columns ?? 80) - 1;
-		let JSONString =
-			JSON.stringify(other, null, ' ').replace(/\n/g, '').replace(/\s+/g, ' ').substring(0, cols) +
-			'…';
-		return `${chalk.dim(timestamp)} ${service}\t${chalk.bold(level)}: ${message}\n${chalk.dim(
-			JSONString
-		)}`;
+		let JSONString = JSON.stringify(other, null, ' ');
+
+		if (!level.includes('DEBUG'))
+			JSONString = chalk.dim(
+				JSON.stringify(other, null, ' ')
+					.replace(/\n/g, '')
+					.replace(/\s+/g, ' ')
+					.substring(0, cols) + '…'
+			);
+		return `${chalk.dim(timestamp)} ${service}\t${chalk.bold(level)}: ${message}\n${JSONString}`;
 	})
 );
 

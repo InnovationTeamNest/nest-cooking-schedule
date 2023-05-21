@@ -27,5 +27,5 @@ const SessionSchema = new Schema({
 	}
 });
 
-const Session = mongoose.model('Session', SessionSchema);
+const Session = mongoose.model('Session', SessionSchema, 'Sessions', { overwriteModels: true });
 export default Session;

@@ -23,21 +23,25 @@
 		<h2>Turni di pulizia</h2>
 	</div>
 	<div class="right">
-		<NavLink class="admin" hidden={!loggedIn} href="/admin">
-			<IconTools size={24} />
-		</NavLink>
+		{#if loggedIn && $loggedUser?.role === "executive"}
+			<NavLink class="admin" hidden={false} href="/admin">
+				<IconTools size={24} />
+			</NavLink>
+		{/if}
 		<NavLink class="home" hidden={false} href="/">
 			<IconHome size={24} />
 		</NavLink>
-		<NavLink class="calendar" hidden={!loggedIn} href="/calendar">
-			<IconCalendar size={24} />
-		</NavLink>
-		<NavLink class="settings" hidden={!loggedIn} href="/settings">
-			<IconSettings size={24} />
-		</NavLink>
-		<button class="logout" hidden={!loggedIn} on:click={logout}>
-			<IconLogout size={24} />
-		</button>
+		{#if loggedIn}
+			<NavLink class="calendar" hidden={false} href="/calendar">
+				<IconCalendar size={24} />
+			</NavLink>
+			<NavLink class="settings" hidden={false} href="/settings">
+				<IconSettings size={24} />
+			</NavLink>
+			<button class="logout" hidden={false} on:click={logout}>
+				<IconLogout size={24} />
+			</button>
+		{/if}
 		<div class="user">
 			<TelegramLogin mode="callback" requestAccess="write" telegramLogin="NESTCookingBot" />
 		</div>

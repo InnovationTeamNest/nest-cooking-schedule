@@ -48,7 +48,7 @@ const StudentSchema = new Schema(
 		},
 		groupNumber: {
 			type: Number,
-			ref: 'Groups',
+			ref: 'Group',
 			required: true
 		},
 		role: {
@@ -173,5 +173,5 @@ const StudentSchema = new Schema(
 	}
 );
 
-const Student = mongoose.model('Students', StudentSchema);
+const Student = mongoose.model('Students', StudentSchema, 'Students', { overwriteModels: true });
 export default Student;

@@ -1,7 +1,7 @@
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
 
-import type Shift from './models/Shift';
+import type IShift from './models/Shift';
 import type { IStudent } from '$lib/server/models/Student';
 
 declare global {
@@ -9,7 +9,7 @@ declare global {
 		// interface Error {}
 		interface Locals {
 			user: IStudent;
-			shifts: Shift[];
+			shifts: IShift[];
 		}
 		// interface PageData {}
 		// interface Platform {}

@@ -13,10 +13,10 @@
 </div>
 
 <script lang="ts">
-import type Shift from '../models/Shift';
+import type IShift from '../models/Shift';
 import { IconSun, IconMoon } from '@tabler/icons-svelte';
 
-export let shift: Shift;
+export let shift: IShift;
 </script>
 
 <style>

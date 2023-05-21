@@ -1,4 +1,4 @@
-export default interface Shift {
+export default interface IShift {
 	group: {
 		number: number;
 		members: string[];
