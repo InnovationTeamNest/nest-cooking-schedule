@@ -2,6 +2,7 @@ import Student from '$lib/server/models/Student';
 import '$lib/server/database';
 import config from './routes/api/config';
 import AuthLogger from '$lib/server/loggers/logger.auth';
+import type { Handle } from '@sveltejs/kit';
 
 export const handle = (async ({ event, resolve }) => {
 	let request = event.request;
