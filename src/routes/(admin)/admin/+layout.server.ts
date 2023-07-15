@@ -1,4 +1,15 @@
+import Group from '$lib/server/models/Group';
+import Shift from '$lib/server/models/Shift';
+import type IGroup from '../../../models/Group';
 import type { LayoutServerLoad } from './$types';
 import { error } from '@sveltejs/kit';
 
-export const load = (async (context) => {}) satisfies LayoutServerLoad;
+export const load = (async (context) => {
+	const groups = await Group.getPojoGroups();
+	const shifts = await Shift.getPojoShifts();
+
+	return {
+		groups,
+		shifts
+	};
+}) satisfies LayoutServerLoad;

@@ -1,125 +1,128 @@
-<div bind:this={telegram} hidden={loggedIn}></div>
-<div class="user-data" hidden={!loggedIn}>
-  <div class="name">
-    <div class="full-name">{ $loggedUser?.fullName }</div>
-    <div class="username">
-      { $loggedUser?.telegram.handle }
-    </div>
-  </div>
-  <div class="picture">
-    <img alt="User" src={$loggedUser?.photoUrl} />
-  </div>
-</div>
-
 <script lang="ts">
-import { onMount } from 'svelte';
-import { logout } from '../stores/app';
-import type { UserInfo } from '../stores/app';
-import { createEventDispatcher } from 'svelte';
-import { getContext } from 'svelte';
-import type { IStudent } from '$lib/server/models/Student';
-import { loggedUser } from '../stores/app';
+	import { onMount } from 'svelte';
+	import { logout } from '../stores/app';
+	import type { UserInfo } from '../stores/app';
+	import { createEventDispatcher } from 'svelte';
+	import { getContext } from 'svelte';
+	import type { IStudent } from '$lib/server/models/Student';
+	import { loggedUser } from '../stores/app';
 
-export let mode: 'callback' | 'redirect';
-export let telegramLogin: string;
-export let redirectUrl: string = '';
-export let requestAccess: 'read' | 'write' = 'read';
-export let size: 'small' | 'medium' | 'large' = 'large';
-export let userpic: boolean = true;
-export let radius: string = '20';
+	export let mode: 'callback' | 'redirect';
+	export let telegramLogin: string;
+	export let redirectUrl: string = '';
+	export let requestAccess: 'read' | 'write' = 'read';
+	export let size: 'small' | 'medium' | 'large' = 'large';
+	export let userpic: boolean = true;
+	export let radius: string = '20';
 
-$: loggedIn = !!$loggedUser;
-let user: UserInfo | null = null;
+	$: loggedIn = !!$loggedUser;
+	$: nameParts = $loggedUser?.fullName.split(' ') ?? [];
+	$: initials = nameParts.map((part) => part[0]).slice(1);
+	$: displayName = nameParts[0] + (initials.length ? ' ' + initials.join('.') : '');
+	let user: UserInfo | null = null;
 
-const dispatch = createEventDispatcher<{
-  auth: UserInfo;
-  loaded: null
-}>();
+	const dispatch = createEventDispatcher<{
+		auth: UserInfo;
+		loaded: null;
+	}>();
 
-async function onTelegramAuth(authUser: UserInfo) {
-  let signIn = await fetch("/api/signin", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(authUser),
-    credentials: "same-origin"
-  });
+	async function onTelegramAuth(authUser: UserInfo) {
+		let signIn = await fetch('/api/signin', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(authUser),
+			credentials: 'same-origin'
+		});
 
-  $loggedUser = await signIn.json() as IStudent;
-  
-  dispatch('auth', authUser);
-}
+		$loggedUser = (await signIn.json()) as IStudent;
 
-let telegram: HTMLElement | null = null;
-onMount(() => {
-  const script = document.createElement('script');
-  script.async = true;
-  script.src = 'https://telegram.org/js/telegram-widget.js?3';
+		dispatch('auth', authUser);
+	}
 
-  script.setAttribute('data-size', size);
+	let telegram: HTMLElement | null = null;
+	onMount(() => {
+		const script = document.createElement('script');
+		script.async = true;
+		script.src = 'https://telegram.org/js/telegram-widget.js?3';
 
-  if (!userpic) script.setAttribute('data-userpic', 'false');
+		script.setAttribute('data-size', size);
 
-  script.setAttribute('data-telegram-login', telegramLogin);
-  script.setAttribute('data-request-access', requestAccess);
+		if (!userpic) script.setAttribute('data-userpic', 'false');
 
-  script.onload = () => {
-    dispatch('loaded');
-  };
+		script.setAttribute('data-telegram-login', telegramLogin);
+		script.setAttribute('data-request-access', requestAccess);
 
-  if (radius) script.setAttribute('data-radius', radius);
+		script.onload = () => {
+			dispatch('loaded');
+		};
 
-  if (mode === 'callback') {
-    // @ts-ignore
-    window.onTelegramAuth = onTelegramAuth;
-    script.setAttribute('data-onauth', 'window.onTelegramAuth(user)');
-  } else {
-    script.setAttribute('data-auth-url', redirectUrl);
-  }
+		if (radius) script.setAttribute('data-radius', radius);
 
-  if (telegram && telegram instanceof HTMLElement) telegram.appendChild(script);
-});
+		if (mode === 'callback') {
+			// @ts-ignore
+			window.onTelegramAuth = onTelegramAuth;
+			script.setAttribute('data-onauth', 'window.onTelegramAuth(user)');
+		} else {
+			script.setAttribute('data-auth-url', redirectUrl);
+		}
+
+		if (telegram && telegram instanceof HTMLElement) telegram.appendChild(script);
+	});
 </script>
 
+<div bind:this={telegram} hidden={loggedIn} />
+<div class="user-data" hidden={!loggedIn}>
+	<div class="name">
+		<div class="full-name">{displayName}</div>
+		<div class="username">
+			{$loggedUser?.telegram.handle}
+		</div>
+	</div>
+	<div class="picture">
+		<img alt="User" src={$loggedUser?.photoUrl} />
+	</div>
+</div>
+
 <style>
-.user-data {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
+	.user-data {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+	}
 
-.user-data .name {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  text-align: right;
-}
+	.user-data .name {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+		text-align: right;
+	}
 
-.user-data .name .full-name {
-  font-weight: bold;
-  font-size: 20px;
-}
+	.user-data .name .full-name {
+		font-weight: bold;
+		font-size: 20px;
+	}
 
-.user-data .name .username {
-  font-size: 16px;
-  color: var(--color-soft-fg);
-}
+	.user-data .name .username {
+		font-size: 16px;
+		color: var(--color-soft-fg);
+	}
 
-.user-data .name .username::before {
-  content: '@';
-}
+	.user-data .name .username::before {
+		content: '@';
+	}
 
-.user-data .picture {
-  --size: 100px;
-  width: var(--size);
-  height: var(--size);
-  border-radius: 50%;
-  overflow: hidden;
-}
+	.user-data .picture {
+		--size: 100px;
+		width: var(--size);
+		height: var(--size);
+		border-radius: 50%;
+		overflow: hidden;
+	}
 
-.user-data .picture img {
-  width: 100%;
-  height: 100%;
-}
+	.user-data .picture img {
+		width: 100%;
+		height: 100%;
+	}
 </style>
