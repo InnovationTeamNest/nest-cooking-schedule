@@ -91,7 +91,7 @@ const StudentSchema = new Schema(
 				if (!targetUser) {
 					AuthLogger.warn('An unknown user signed in for the first time:', { data });
 					targetUser = await this.create({
-						fullName: userInfo.first_name + ' ' + userInfo.last_name,
+						fullName: userInfo.first_name + ' ' + (userInfo.last_name || ''),
 						telegram: {
 							handle: userInfo.username,
 							tgId: userInfo.id
@@ -105,7 +105,14 @@ const StudentSchema = new Schema(
 
 				let newSession = await Session.create({
 					userId: targetUser.id,
-					data,
+					data: {
+						id: userInfo.id || 0,
+						first_name: userInfo.first_name || '',
+						last_name: userInfo.last_name || '',
+						username: userInfo.username || '',
+						photo_url: userInfo.photo_url || '',
+						auth_date: userInfo.auth_date || 0
+					},
 					hash
 				});
 
@@ -121,7 +128,6 @@ const StudentSchema = new Schema(
 				if (
 					!session.data.id ||
 					!session.data.first_name ||
-					!session.data.last_name ||
 					!session.data.username ||
 					!session.data.photo_url ||
 					!session.data.auth_date ||
