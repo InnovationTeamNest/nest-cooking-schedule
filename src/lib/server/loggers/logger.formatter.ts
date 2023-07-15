@@ -13,14 +13,18 @@ const LogFormatter = winston.format.combine(
 		let cols = (process?.stdout?.columns ?? 80) - 1;
 		let JSONString = JSON.stringify(other, null, ' ');
 
-		if (!level.includes('DEBUG'))
+		if (JSONString === '{}') JSONString = '';
+		else JSONString = '\n' + JSONString;
+
+		if (!level.includes('DEBUG') && JSONString !== '')
 			JSONString = chalk.dim(
 				JSON.stringify(other, null, ' ')
 					.replace(/\n/g, '')
 					.replace(/\s+/g, ' ')
-					.substring(0, cols) + '…'
+					.substring(0, cols) + (JSONString.length > cols ? '…' : '')
 			);
-		return `${chalk.dim(timestamp)} ${service}\t${chalk.bold(level)}: ${message}\n${JSONString}`;
+
+		return `${chalk.dim(timestamp)} ${service}\t${chalk.bold(level)}: ${message}${JSONString}`;
 	})
 );
 
