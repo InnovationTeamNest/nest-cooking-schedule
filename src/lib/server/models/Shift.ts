@@ -1,5 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 import ActionsLogger from '../loggers/logger.actions';
+import Group from './Group';
 
 const ShiftSchema = new Schema(
 	{
@@ -54,7 +55,7 @@ const ShiftSchema = new Schema(
 					group = lastShift.group.number + 1;
 				}
 
-				const numberOfGroups = await mongoose.model('Group').countDocuments();
+				const numberOfGroups = await Group.countDocuments();
 
 				let date = lastShift?.date ?? new Date();
 				date.setHours(0, 0, 0, 0);
@@ -82,7 +83,7 @@ const ShiftSchema = new Schema(
 					const sundayDate = new Date(saturdayDate.getTime() + 24 * 60 * 60 * 1000);
 
 					let groupNumber = ((group - 1) % numberOfGroups) + 1;
-					let groupId = (await mongoose.model('Group').findOne({ number: groupNumber }))._id;
+					let groupId = (await Group.findOne({ number: groupNumber }))._id;
 
 					if (!(await this.exists({ date: saturdayDate, when: 'lunch' }))) {
 						shifts.push({
@@ -92,7 +93,7 @@ const ShiftSchema = new Schema(
 							when: 'lunch'
 						});
 						groupNumber = (groupNumber % numberOfGroups) + 1;
-						groupId = (await mongoose.model('Group').findOne({ number: groupNumber }))._id;
+						groupId = (await Group.findOne({ number: groupNumber }))._id;
 					}
 
 					if (!(await this.exists({ date: saturdayDate, when: 'dinner' }))) {
@@ -103,7 +104,7 @@ const ShiftSchema = new Schema(
 							when: 'dinner'
 						});
 						groupNumber = (groupNumber % numberOfGroups) + 1;
-						groupId = (await mongoose.model('Group').findOne({ number: groupNumber }))._id;
+						groupId = (await Group.findOne({ number: groupNumber }))._id;
 					}
 
 					if (!(await this.exists({ date: sundayDate, when: 'lunch' }))) {
@@ -114,7 +115,7 @@ const ShiftSchema = new Schema(
 							when: 'lunch'
 						});
 						groupNumber = (groupNumber % numberOfGroups) + 1;
-						groupId = (await mongoose.model('Group').findOne({ number: groupNumber }))._id;
+						groupId = (await Group.findOne({ number: groupNumber }))._id;
 					}
 
 					if (!(await this.exists({ date: sundayDate, when: 'dinner' }))) {
