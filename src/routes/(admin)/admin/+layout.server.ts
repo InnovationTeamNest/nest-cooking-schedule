@@ -5,11 +5,11 @@ import type { LayoutServerLoad } from './$types';
 import { error } from '@sveltejs/kit';
 
 export const load = (async (context) => {
-	const groups = await Group.getPojoGroups();
-	const shifts = await Shift.getPojoShifts();
+  const groups = await Group.getPojoGroups();
+  const shifts = await Shift.getPojoShifts();
 
-	return {
-		groups,
-		shifts
-	};
+  return {
+    groups,
+    shifts
+  };
 }) satisfies LayoutServerLoad;

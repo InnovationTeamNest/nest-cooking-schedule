@@ -1,40 +1,37 @@
 @font-face {
-  font-family: "Arvo";
-  src: url("./fonts/Arvo-Bold.eot?#iefix") format("embedded-opentype"),
-    url("./fonts/Arvo-Bold.woff2") format("woff2"),
-    url("./fonts/Arvo-Bold.woff") format("woff"),
-    url("./fonts/Arvo-Bold.ttf") format("truetype"),
-    url("./fonts/Arvo-Bold.svg#Arvo-Bold") format("svg");
+  font-family: 'Arvo';
+  src: url('./fonts/Arvo-Bold.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/Arvo-Bold.woff2') format('woff2'), url('./fonts/Arvo-Bold.woff') format('woff'),
+    url('./fonts/Arvo-Bold.ttf') format('truetype'),
+    url('./fonts/Arvo-Bold.svg#Arvo-Bold') format('svg');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Arvo";
-  src: url("./fonts/Arvo-Regular.eot?#iefix") format("embedded-opentype"),
-    url("./fonts/Arvo-Regular.woff2") format("woff2"),
-    url("./fonts/Arvo.woff") format("woff"),
-    url("./fonts/Arvo.ttf") format("truetype"),
-    url("./fonts/Arvo.svg#Arvo") format("svg");
+  font-family: 'Arvo';
+  src: url('./fonts/Arvo-Regular.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/Arvo-Regular.woff2') format('woff2'), url('./fonts/Arvo.woff') format('woff'),
+    url('./fonts/Arvo.ttf') format('truetype'), url('./fonts/Arvo.svg#Arvo') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 :root {
-  --color-page-bg: #FFFFFF;
+  --color-page-bg: #ffffff;
   --color-page-bg-mid-contrast: #fbfbfb;
   --color-page-bg-contrast: #f2f2f2;
-  --color-card-bg: #FFFFFF;
+  --color-card-bg: #ffffff;
   --color-daylight-bg: #e5de44;
   --color-nighttime-bg: #053752;
-  --color-cooking-club-fg: #85190F;
+  --color-cooking-club-fg: #85190f;
   --color-soft-fg: #777;
   --color-button-hover: rgba(0, 0, 0, 0.05);
 
   --date-picker-foreground: var(--color-page-fg);
   --date-picker-background: var(--color-page-bg-contrast);
   --date-picker-highlight-border: var(--color-cooking-club-fg);
-  --date-picker-highlight-shadow: #85190F99;
+  --date-picker-highlight-shadow: #85190f99;
   --date-picker-selected-color: var(--color-page-fg);
   --date-picker-selected-background: var(--color-cooking-club-fg);
 }
@@ -102,14 +99,14 @@ input.inline {
   margin: 0 1ch;
 }
 
-input[type=submit] {
+input[type='submit'] {
   background: var(--color-cooking-club-fg);
   color: white;
   font-weight: bold;
   cursor: pointer;
 }
 
-input[type=submit]:hover {
+input[type='submit']:hover {
   filter: brightness(0.9);
 }
 
@@ -124,7 +121,7 @@ label[for] {
 }
 
 .date-time-field::after {
-  content: "";
+  content: '';
   display: block;
   width: 24px;
   height: 24px;

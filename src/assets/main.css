@@ -14,9 +14,10 @@ body {
   width: 100vw;
   height: 100vh;
   display: grid !important;
-  grid-template-areas: "Header"
-                        "Main"
-                        "Footer";
+  grid-template-areas:
+    'Header'
+    'Main'
+    'Footer';
 
   grid-template-rows: fit-content(100%) 1fr fit-content(100%);
 }
