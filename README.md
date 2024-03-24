@@ -1,6 +1,6 @@
 # nest-cooking-schedule
 
-WIP
+**Development has been suspended due to a change in cleaning policies. This repository will remain archived.**
 
 ## Developing
 
@@ -27,6 +27,8 @@ To create a production version of your app:
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
+to run it
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+```bash
+node build
+```
